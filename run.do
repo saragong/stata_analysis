@@ -7,6 +7,7 @@ Both datasets are contained in the file "nsw.dta". The observations for which "e
 */
 
 * initialize
+log using logfile, replace // start log
 use nsw.dta, clear
 net ins isvar, from(http://fmwww.bc.edu/RePEc/bocode/i) // install the package "isvar"
 net ins propensity, from(http://personalpages.manchester.ac.uk/staff/mark.lunt) // install the package "propensity"
@@ -81,3 +82,5 @@ graph tw kdensity ps2 if [!missing(match) & treat==1]
 legend(label(1 "Treated") label(2 "Untreated"))
 ;
 #delimit cr
+
+log close // stop log
